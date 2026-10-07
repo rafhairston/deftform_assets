@@ -1,0 +1,64 @@
+/* =========================================================
+   RESIDENTS GUIDE — DEFTFORM EMBED STYLING (PRODUCTION)
+   Target: QR Code Sizing, Centering, & Layout Protection
+   ========================================================= */
+
+/* 1. Universal Container Isolation */
+.deftform,
+form {
+  box-sizing: border-box;
+}
+
+/* 2. Target Only Form-Body Image Elements (QR Code) 
+      Explicitly excludes header logos, avatars, and footer branding */
+form img:not([class*="logo"]):not([class*="header"]):not([class*="avatar"]):not(footer img),
+.deftform img:not([class*="logo"]):not([class*="header"]):not([class*="avatar"]):not(footer img),
+[data-type="image"] img,
+.df-image-element img,
+.field-image img {
+  max-width: 200px !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1 !important;
+  display: block !important;
+  margin: 16px auto !important;
+  padding: 8px !important;
+  background-color: #ffffff !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(11, 11, 15, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 3. Universal Wrapper Centering (No :has dependency) */
+[data-type="image"],
+.df-image-element,
+.field-image,
+div:has(> img:not([class*="logo"]):not([class*="header"])) {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+/* 4. Protect Header Logo & Footer from Resizing / Borders */
+.header-image img,
+[data-element="header"] img,
+header img,
+footer img {
+  max-width: initial !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* 5. Mobile Ergonomics (<= 480px Viewports) */
+@media screen and (max-width: 480px) {
+  form img:not([class*="logo"]):not([class*="header"]):not(footer img),
+  [data-type="image"] img {
+    max-width: 180px !important;
+    margin: 12px auto !important;
+  }
+}
