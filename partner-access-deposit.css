@@ -1,8 +1,0 @@
-/* Partner Access Deposit form
-   Resizes the Zelle QR image block so it doesn't stretch to full form width. */
-
-img.cs_field {
-  width: 100%;      /* scale down on small screens */
-  max-width: 340px; /* cap the size on desktop; adjust 300-380px to taste */
-  height: auto;     /* keep the original aspect ratio */
-}
